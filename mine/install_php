@@ -1,0 +1,7 @@
+CENTOS
+------------------------------------------------------------------------
+
+yum install php
+yum install php-mysql
+
+systemctl restart httpd.service
