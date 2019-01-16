@@ -1,0 +1,57 @@
+CENTOS
+
+Install Mysql
+-----------------------------------------
+sudo yum update
+
+wget http://dev.mysql.com/get/mysql57-community-release-el7-9.noarch.rpm
+
+sudo rpm -Uvh mysql57-community-release-el7-9.noarch.rpm
+
+sudo yum install mysql-server
+
+sudo systemctl start mysqld
+
+sudo systemctl status mysqld
+
+
+Change password root mysql
+------------------------------------------
+systemctl set-environment MYSQLD_OPTS="--skip-grant-tables"
+    
+systemctl restart mysqld
+    
+mysql -u root mysql
+    
+update user set authentication_string=password('NUEVO_PASSWORD') where user='root';
+    
+flush privileges;
+    
+exit;
+    
+systemctl unset-environment MYSQLD_OPTS
+    
+systemctl restart mysqld
+
+
+Create users (root - Xtreme1985M)
+----------------------------------------------
+mysql -u root -p
+
+CREATE USER 'usuario'@'localhost' IDENTIFIED BY 'password'
+
+Select User, host, authentication_string from mysql.user
+
+
+Remote Access 
+----------------------------------------------
+mysql -h localhost -u root -p
+
+GRANT ALL PRIVILEGES ON *.* TO 'usuarionuevo'@'localhost' IDENTIFIED BY 'contraseña' WITH GRANT OPTION;
+GRANT ALL PRIVILEGES ON *.* TO 'usuarionuevo'@'%' IDENTIFIED BY 'contraseña' WITH GRANT OPTION;
+
+systemctl restart mysqld
+
+iptables -I INPUT -p tcp --dport 3306 -m state --state NEW,ESTABLISHED -j ACCEPT
+
+/sbin/service iptables save 
