@@ -5,3 +5,7 @@ yum install php php-mysql php-mcrypt php-xml php-cli php-soap php-zip php-ldap g
 systemctl restart httpd.service
 
 wget https://sourceforge.net/projects/itop/files/latest/downloawget https://sourceforge.net/projects/itop/files/latest/download\iTop-2.6.0-4294.zipd\iTop-2.6.0-4294.zip
+
+Para permitir seguir instalando el ITOP
+------------------------------------------------
+chown -R www-data /var/www/html/itop/
