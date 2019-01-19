@@ -1,6 +1,6 @@
 CENTOS
 ------------------------------------------------------------------------
-yum install php php-mysql php-mcrypt php-xml php-cli php-soap php-zip php-ldap graphviz
+yum install php php-mysql php-mcrypt php-xml php-cli php-soap php-zip php-ldap php-gd graphviz
 
 systemctl restart httpd.service
 
