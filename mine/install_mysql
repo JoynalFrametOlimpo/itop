@@ -50,6 +50,10 @@ mysql -h localhost -u root -p
 GRANT ALL PRIVILEGES ON *.* TO 'usuarionuevo'@'localhost' IDENTIFIED BY 'contraseña' WITH GRANT OPTION;
 GRANT ALL PRIVILEGES ON *.* TO 'usuarionuevo'@'%' IDENTIFIED BY 'contraseña' WITH GRANT OPTION;
 
+vi /etc/mysql/mysql.conf.d/mysqld.cnf
+skip-external-locking
+bind-address = 0.0.0.0
+
 systemctl restart mysqld
 
 iptables -I INPUT -p tcp --dport 3306 -m state --state NEW,ESTABLISHED -j ACCEPT
