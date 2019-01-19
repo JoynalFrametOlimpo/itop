@@ -1,7 +1,9 @@
 CENTOS
 -------------------------------------------------------------
-
 yum install httpd
 systemctl start httpd.service
-
 systemctl enable httpd.service
+
+UBUNTU SERVER
+--------------------------------------------------------------
+sudo apt -get install apache2
